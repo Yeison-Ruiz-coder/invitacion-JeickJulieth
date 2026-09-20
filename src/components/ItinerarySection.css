@@ -1,0 +1,207 @@
+.itinerary-section-card {
+  padding: 0 1.25rem;
+  margin-top: 3.5rem;
+}
+
+.itinerary-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+
+.itinerary-header-star {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  background: #d5a44d;
+  box-shadow: 0 0 12px rgba(213, 164, 77, 0.75), 0 0 16px rgba(213, 164, 77, 0.32);
+  margin-bottom: 0.4rem;
+}
+
+.itinerary-section-eyebrow {
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18rem;
+  color: #c4973a;
+  text-transform: uppercase;
+}
+
+.itinerary-section-heading {
+  margin: 0.75rem 0 0;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(3.2rem, 9.2vw, 5.6rem);
+  line-height: 1;
+  font-weight: 400;
+  color: #1f2d4e;
+  margin-top: 1.2rem;
+  margin-bottom: 4.8rem;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.15), 1px 1px 0 rgba(31, 45, 78, 0.15);
+  -webkit-text-stroke: 0.5px rgba(31, 45, 78, 0.18);
+}
+
+.itinerary-track {
+  --itinerary-glow-top: 18px;
+  position: relative;
+  margin-top: 0.8rem;
+  padding: 1.1rem 0.2rem 0.5rem;
+  min-height: 340px;
+}
+
+.itinerary-track::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(213, 164, 77, 0.06), rgba(213, 164, 77, 0.20), rgba(213, 164, 77, 0.14), rgba(213, 164, 77, 0.08), rgba(213, 164, 77, 0.04));
+  border-radius: 999px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+.itinerary-track::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: var(--itinerary-glow-top);
+  width: 2px;
+  height: 12%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(213, 164, 77, 0.95), rgba(213, 164, 77, 0.2));
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(213, 164, 77, 0.22);
+  opacity: 0.95;
+  z-index: 0;
+  pointer-events: none;
+  transition: top 0.18s ease-out, opacity 0.18s ease-out;
+}
+
+.itinerary-glow {
+  display: none;
+}
+
+@keyframes itineraryGlow {
+  0%, 12% {
+    opacity: 0;
+    transform: scaleY(0.18);
+  }
+  28%, 74% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  88%, 100% {
+    opacity: 0;
+    transform: scaleY(0.25);
+  }
+}
+
+@keyframes itineraryGlowPulse {
+  0%, 18% {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+  35%, 72% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  88%, 100% {
+    opacity: 0.1;
+    transform: scale(0.75);
+  }
+}
+
+
+.itinerary-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 94px;
+  padding: 0.5rem 0;
+  z-index: 1;
+  text-align: center;
+}
+
+.itinerary-item--end {
+  min-height: 126px;
+}
+
+.itinerary-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.itinerary-gem {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  background: #d5a44d;
+  box-shadow: 0 0 12px rgba(213, 164, 77, 0.75), 0 0 16px rgba(213, 164, 77, 0.32);
+}
+
+.itinerary-gem-navy {
+  background: #335778;
+  box-shadow: 0 0 12px rgba(51, 87, 120, 0.7), 0 0 16px rgba(51, 87, 120, 0.3);
+}
+
+.itinerary-gem-mid {
+  background: #af8a42;
+}
+
+.itinerary-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.itinerary-time {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  line-height: 0.9;
+  color: #2f2a2a;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  transform: translateY(-2px);
+}
+
+.itinerary-event {
+  display: block;
+  color: #2e2a27;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.itinerary-sub {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.72rem;
+  color: #7e6431;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}

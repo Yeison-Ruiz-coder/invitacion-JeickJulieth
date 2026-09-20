@@ -1,0 +1,101 @@
+.location-section-card {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  padding: 0 1.25rem;
+}
+
+.location-section-title {
+  margin: 0;
+  text-align: center;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(3.2rem, 9.2vw, 5.6rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #1f2d4e;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.15), 1px 1px 0 rgba(31, 45, 78, 0.15);
+  -webkit-text-stroke: 0.5px rgba(31, 45, 78, 0.18);
+}
+
+.location-section-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.location-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-left: 4px solid rgba(196, 151, 58, 0.9);
+  border-radius: 18px;
+  padding: 1.1rem 1rem 1rem;
+  box-shadow: 0 12px 26px rgba(26, 23, 18, 0.08);
+  min-height: 18rem;
+}
+
+.location-card-featured {
+  padding-top: 1.4rem;
+}
+
+.location-card-secondary {
+  min-height: 19.5rem;
+}
+
+.location-card-title {
+  margin: 0 0 1.1rem;
+  text-align: center;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(2.1rem, 6vw, 3.2rem);
+  font-weight: 400;
+  line-height: 0.95;
+  color: #1f2d4e;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.12), 1px 1px 0 rgba(31, 45, 78, 0.12);
+  -webkit-text-stroke: 0.4px rgba(31, 45, 78, 0.12);
+}
+
+.location-card-title-small {
+  font-size: clamp(1.9rem, 5.4vw, 2.9rem);
+}
+
+.location-card-subtitle {
+  text-align: center;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: #5e4c2b;
+  margin: 0 0 1.05rem;
+}
+
+.location-card-time {
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: #1d2b42;
+  margin: 0 0 1rem;
+}
+
+.location-map-wrap {
+  margin-top: 0.45rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(196, 151, 58, 0.26);
+}
+
+.location-card-button {
+  width: fit-content;
+  min-width: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #1c2d4f, #162845);
+  color: #fff;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  padding: 0.68rem 1.95rem;
+  box-shadow: 0 8px 18px rgba(22, 40, 69, 0.18);
+  text-decoration: none;
+}

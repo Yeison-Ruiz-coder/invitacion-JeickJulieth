@@ -1,0 +1,920 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Parisienne&display=swap');
+
+.invitation-page {
+  min-height: 100vh;
+  background: #f0ede6;
+  color: #1a2840;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.invitation-page * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.invitation-page .wrap {
+  width: min(100%, 540px);
+  margin: 0 auto;
+  background: var(--bg, #f0ede6);
+  color: var(--text, #1a2840);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  background: #dfe7ec;
+}
+
+.hero-bg,
+.hero-veil {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg {
+  background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.8) brightness(0.72);
+}
+
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(15, 30, 64, 0.15) 0%, rgba(15, 30, 64, 0.05) 30%, rgba(15, 30, 64, 0.45) 62%, rgba(15, 30, 64, 0.88) 82%, #F0EDE6 100%);
+}
+
+.hero-bottom {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  padding: 3rem 1.25rem 2rem;
+  color: #f8f2ea;
+}
+
+.hero-eyebrow {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: #f7e7b7;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.hero-names {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(3.2rem, 11.5vw, 6.4rem);
+  font-weight: 400;
+  line-height: 0.76;
+  letter-spacing: 0.03em;
+  color: #f8f3ed;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.2), 0.7px 0.7px 0 rgba(248, 243, 237, 0.18), 1.2px 1.2px 0 rgba(248, 243, 237, 0.12);
+  -webkit-text-stroke: 0.8px rgba(248, 243, 237, 0.22);
+}
+
+.hero-name-line {
+  display: block;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.2), 0.7px 0.7px 0 rgba(248, 243, 237, 0.18), 1.2px 1.2px 0 rgba(248, 243, 237, 0.12);
+  -webkit-text-stroke: 0.8px rgba(248, 243, 237, 0.22);
+}
+
+.hero-amp {
+  display: block;
+  margin: 0;
+  color: #f0d27c;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: 0.62em;
+  line-height: 0.8;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transform: translateY(-0.04em);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.18), 0.7px 0.7px 0 rgba(240, 210, 124, 0.22), 1.3px 1.3px 0 rgba(240, 210, 124, 0.16);
+  -webkit-text-stroke: 0.8px rgba(240, 210, 124, 0.24);
+}
+
+.hero-badge {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(240, 210, 124, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #f6e3ab;
+}
+
+.orn {
+  width: 100%;
+  padding: 2.8rem 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.orn svg {
+  width: min(90%, 180px);
+  height: auto;
+  display: block;
+  transform-origin: center;
+}
+
+.orn svg path {
+  stroke-width: 0.7;
+  stroke-dasharray: 10 14;
+  stroke-linecap: round;
+  animation: ornamentFlow 6s ease-in-out infinite;
+}
+
+.orn svg polygon:first-of-type {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ornamentSpin 8s linear infinite;
+}
+
+@keyframes ornamentFlow {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0.12;
+  }
+  25% {
+    opacity: 0.38;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 0.72;
+  }
+  80% {
+    opacity: 0.38;
+  }
+  100% {
+    stroke-dashoffset: -100;
+    opacity: 0.12;
+  }
+}
+
+@keyframes ornamentSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.fecha-sec {
+  padding: 2.4rem 1.25rem 1.2rem;
+  margin-bottom: 2.8rem;
+}
+
+.fecha-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  color: #7b5d2d;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: 0.08rem;
+  font-size: 0.93rem;
+}
+
+.fl-bar {
+  height: 1px;
+  width: 42px;
+  background: rgba(127, 94, 52, 0.7);
+}
+
+.fl-bar.right {
+  margin-left: 0.25rem;
+}
+
+#subic,
+#sdc,
+#sfam,
+.gallery,
+#sgifts,
+#shotel,
+#salbum,
+#srsvp,
+footer {
+  padding: 5.6rem 1.25rem 0;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: #c4973a;
+  text-align: center;
+}
+
+.sec-title {
+  margin: 0;
+  text-align: center;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(3.2rem, 9.2vw, 5.6rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #1f2d4e;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.15), 1px 1px 0 rgba(31, 45, 78, 0.15);
+  -webkit-text-stroke: 0.5px rgba(31, 45, 78, 0.18);
+}
+
+.countdown-section,
+.location-section,
+.calendar-section,
+.itinerary-section {
+  position: relative;
+}
+
+.countdown-section {
+  padding: 0 0.85rem;
+}
+
+.countdown-section .eyebrow,
+.location-section .eyebrow,
+.calendar-section .eyebrow,
+.itinerary-section .eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.countdown-section .sec-title,
+.location-section .sec-title,
+.calendar-section .sec-title,
+.itinerary-section .sec-title {
+  margin-bottom: 0;
+}
+
+.cd-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 2.2rem;
+  padding: 0 1.15rem;
+}
+
+.cd-box {
+  background: #ffffff;
+  border: 1px solid rgba(196, 151, 58, 0.42);
+  border-top: 3px solid rgba(196, 151, 58, 0.9);
+  border-radius: 14px;
+  padding: 0.8rem 0.4rem;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(35, 28, 21, 0.06);
+}
+
+.cd-num {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #2a2a2e;
+}
+
+.cd-lbl {
+  margin-top: 0.3rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: #7d6737;
+}
+
+#subic {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.loc-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-left: 4px solid rgba(196, 151, 58, 0.9);
+  border-radius: 18px;
+  padding: 1.1rem 1rem 1rem;
+  box-shadow: 0 12px 26px rgba(26, 23, 18, 0.08);
+  min-height: 18rem;
+}
+
+#lc2 {
+  min-height: 19.5rem;
+}
+
+.loc-card-featured {
+  padding-top: 1.4rem;
+}
+
+.loc-title {
+  margin: 0 0 1.1rem;
+  text-align: center;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(2.1rem, 6vw, 3.2rem);
+  font-weight: 400;
+  line-height: 0.95;
+  color: #1f2d4e;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.12), 1px 1px 0 rgba(31, 45, 78, 0.12);
+  -webkit-text-stroke: 0.4px rgba(31, 45, 78, 0.12);
+}
+
+.loc-title.small {
+  font-size: clamp(1.9rem, 5.4vw, 2.9rem);
+}
+
+.loc-subtitle {
+  text-align: center;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: #5e4c2b;
+  margin: 0 0 1.05rem;
+}
+
+.loc-time {
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: #1d2b42;
+  margin: 0 0 1rem;
+}
+
+.map-wrap {
+  margin-top: 0.45rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(196, 151, 58, 0.26);
+}
+
+.btn,
+.btn-copy,
+.btn-wa,
+.btn-decline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 999px;
+  padding: 0.82rem 1.1rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn,
+.btn-wa {
+  background: linear-gradient(135deg, #203863 0%, #102342 100%);
+  color: #f5e3b0;
+  box-shadow: 0 10px 22px rgba(22, 40, 69, 0.16);
+}
+
+.rsvp-confirm-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.82rem 1.1rem;
+  background: linear-gradient(135deg, #203863 0%, #102342 100%);
+  color: #f5e3b0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(22, 40, 69, 0.16);
+  transition: transform 0.2s ease;
+}
+
+.btn-copy {
+  background: rgba(33, 53, 74, 0.08);
+  border: 1px solid rgba(196, 151, 58, 0.4);
+  color: #2f2a26;
+}
+
+.btn-decline {
+  display: block;
+  width: 100%;
+  margin-top: 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(196, 151, 58, 0.35);
+  color: #7a5f2b;
+}
+
+.rsvp-confirm-btn:hover,
+.btn:hover,
+.btn-copy:hover,
+.btn-wa:hover,
+.btn-decline:hover {
+  transform: translateY(-1px);
+}
+
+.btn-map {
+  width: fit-content;
+  min-width: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #1c2d4f, #162845);
+  color: #fff;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  padding: 0.68rem 1.95rem;
+  box-shadow: 0 8px 18px rgba(22, 40, 69, 0.18);
+}
+
+.btn:hover,
+.btn-copy:hover,
+.btn-wa:hover,
+.btn-decline:hover {
+  transform: translateY(-1px);
+}
+
+.calendar-section {
+  text-align: center;
+  margin-top: 7.8rem;
+}
+
+.calendar-section .eyebrow {
+  margin-bottom: 0.75rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  color: #2e3f60;
+}
+
+.calendar-section .sec-title {
+  margin-bottom: 0.8rem;
+  font-size: clamp(3.5rem, 11vw, 6.2rem);
+  line-height: 0.9;
+  color: #1f2d4e;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.14), 1px 1px 0 rgba(31, 45, 78, 0.14);
+  -webkit-text-stroke: 0.4px rgba(31, 45, 78, 0.12);
+}
+
+.calendar-section p {
+  margin: 0 0 0.9rem;
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-style: italic;
+  color: #2e3a4a;
+  line-height: 1.25;
+}
+
+.gcal-btn {
+  width: min(100%, 300px);
+  margin: 1.8rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1d2f54, #1a2944);
+  color: #fff;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.11rem;
+  padding: 0.7rem 0.9rem;
+  text-transform: uppercase;
+  box-shadow: 0 10px 22px rgba(22, 40, 69, 0.18);
+}
+
+.itinerary-section {
+  padding-top: 3.6rem;
+}
+
+.itinerary-section .eyebrow {
+  margin-bottom: 0.75rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.28rem;
+  color: #2e3f60;
+  text-transform: uppercase;
+}
+
+.itinerary-section .sec-title {
+  margin-bottom: 0.5rem;
+  font-size: clamp(3rem, 10vw, 5.8rem);
+  line-height: 0.9;
+  color: #1f2d4e;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.14), 1px 1px 0 rgba(31, 45, 78, 0.14);
+  -webkit-text-stroke: 0.4px rgba(31, 45, 78, 0.12);
+}
+
+.itv3 {
+  position: relative;
+  margin-top: 2.1rem;
+  padding: 1.2rem 0.2rem 0.4rem;
+}
+
+.itv3-track {
+  position: absolute;
+  left: 26px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(196, 151, 58, 0.8), rgba(44, 71, 89, 0.7));
+}
+
+.itv3-glow {
+  position: absolute;
+  left: 17px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(209, 164, 77, 0.9);
+  box-shadow: 0 0 18px rgba(209, 164, 77, 0.8);
+}
+
+.itv3-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px 70px 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.95rem 0.4rem 0.95rem 0.8rem;
+}
+
+.itv3-gem {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #d5a44d;
+  box-shadow: 0 0 12px rgba(213, 164, 77, 0.75);
+  z-index: 1;
+}
+
+.itv3-gem-navy {
+  background: #335778;
+  box-shadow: 0 0 12px rgba(51, 87, 120, 0.7);
+}
+
+.itv3-gem-mid {
+  background: #af8a42;
+}
+
+.itv3-time {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  color: #3b2e26;
+}
+
+.itv3-ev {
+  font-weight: 600;
+  color: #2e2a27;
+}
+
+.itv3-sub {
+  grid-column: 3;
+  font-size: 0.82rem;
+  color: #7e6431;
+}
+
+.gift-intro {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card, rgba(255, 255, 255, 0.42));
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 24px rgba(15, 30, 64, 0.08);
+  border: 1px solid rgba(196, 151, 58, 0.22);
+}
+
+.gift-intro-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--dark, #2e2a26);
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.gift-intro-sub {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--gold, #b68a2d);
+  letter-spacing: 1px;
+  line-height: 1.55;
+}
+
+.gift-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.gift-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  border: 1px solid rgba(196, 151, 58, 0.25);
+}
+
+.gift-logo-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #b98d41, #7b5a27);
+  box-shadow: 0 10px 22px rgba(104, 74, 24, 0.2);
+}
+
+.gift-body {
+  flex: 1;
+}
+
+.gb-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  color: #2d2827;
+}
+
+.gb-desc {
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #645342;
+}
+
+.gb-account {
+  margin-top: 0.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  color: #2b2a29;
+}
+
+.hotel-card {
+  width: min(100%, 520px);
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid rgba(196, 151, 58, 0.7);
+  border-top: 5px solid #c89a39;
+  border-radius: 22px;
+  padding: 1.6rem 1.4rem 1.4rem;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(31, 45, 78, 0.04);
+}
+
+.hotel-name {
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 0.95;
+  color: #1f2d4e;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.12), 1px 1px 0 rgba(31, 45, 78, 0.12);
+}
+
+.hotel-tip {
+  margin-top: 0.9rem;
+  color: #554b44;
+  line-height: 1.7;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.15rem, 3vw, 1.6rem);
+  font-style: italic;
+}
+
+.hotel-tip em {
+  font-style: italic;
+  color: #2b3d5d;
+}
+
+.hotel-phone {
+  margin-top: 0.9rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.2;
+  letter-spacing: 0.08rem;
+}
+
+.hotel-phone a {
+  color: #1f2d4e;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#shotel .eyebrow {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: #c4973a;
+  margin-bottom: 0.75rem;
+}
+
+#shotel .sec-title {
+  font-size: clamp(3.5rem, 10vw, 6.2rem);
+  margin-bottom: 2.7rem;
+
+}
+
+#shotel .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: min(100%, 240px);
+  margin-top: 1.2rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #203863 0%, #102342 100%);
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(22, 40, 69, 0.16);
+}
+
+.album-sub {
+  margin-top: 0.8rem;
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  color: #5b4d3f;
+  line-height: 1.8;
+}
+
+.album-qr-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.album-qr-frame {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(196, 151, 58, 0.3);
+  border-radius: 22px;
+  padding: 0.9rem;
+  box-shadow: 0 12px 30px rgba(26, 20, 14, 0.08);
+}
+
+.album-qr-frame img {
+  display: block;
+  width: 180px;
+  height: 180px;
+}
+
+.album-hashtag {
+  margin-top: 1rem;
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: #8e6a2c;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.rsvp-card {
+  margin-top: 1rem;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid rgba(196, 151, 58, 0.32);
+  border-top: 5px solid #c89a39;
+  padding: 1rem;
+  box-shadow: 0 10px 24px rgba(31, 45, 78, 0.04);
+}
+
+.rsvp-label {
+  display: block;
+  color: #1f2d4e;
+  font-size: 0.85rem;
+  margin-bottom: 0.45rem;
+  font-weight: 600;
+}
+
+.rsvp-select,
+.rsvp-nombre-input {
+  width: 100%;
+  border: 1px solid rgba(196, 151, 58, 0.45);
+  background: #f9f6f2;
+  border-radius: 12px;
+  padding: 0.8rem 0.9rem;
+  font: inherit;
+  color: #2d2a28;
+}
+
+.rsvp-nombre-input {
+  margin-top: 0.8rem;
+}
+
+.rsvp-status {
+  min-height: 1.2rem;
+  margin-top: 0.8rem;
+  text-align: center;
+  color: #8f2e2e;
+}
+
+.rsvp-deadline {
+  margin-top: 0.8rem;
+  text-align: center;
+  color: #7d6432;
+  font-size: 0.8rem;
+}
+
+.final-signoff {
+  margin-top: 5.5rem;
+  padding-top: 2.5rem;
+  text-align: center;
+  color: #6d583d;
+  padding-bottom: 2rem;
+  border-top: 1px solid rgba(196, 151, 58, 0.2);
+}
+
+.fn {
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(3rem, 9vw, 5.1rem);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #1f2d4e;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.12), 1px 1px 0 rgba(31, 45, 78, 0.12);
+}
+
+.fd {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: #2e3f60;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.fc {
+  margin-top: 0.8rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.04rem;
+  color: #5a4837;
+}
+
+.fc a {
+  color: #8a6730;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (max-width: 560px) {
+  .copy-btn,
+  .btn-copy {
+    width: 100%;
+  }
+
+  .dc-figures {
+    grid-template-columns: 1fr;
+  }
+
+  .dc-divider {
+    display: none;
+  }
+
+  .gift-intro {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -1,0 +1,103 @@
+.family-section {
+  padding: 2.8rem 1.25rem 0;
+  text-align: center;
+}
+
+.family-top-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+  color: #c8a55a;
+  opacity: 0.9;
+}
+
+.family-top-ornament .family-star {
+  font-size: 0.8rem;
+  line-height: 1;
+  transform: rotate(18deg);
+}
+
+.family-eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: #c4973a;
+  font-weight: 400;
+}
+
+.family-title {
+  margin: 0 0 1.6rem;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(3.3rem, 10vw, 6.3rem);
+  line-height: 0.95;
+  font-weight: 400;
+  color: #1f2d4e;
+  letter-spacing: -0.04em;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.12), 1px 1px 0 rgba(31, 45, 78, 0.12);
+  -webkit-text-stroke: 0.4px rgba(31, 45, 78, 0.12);
+}
+
+.family-group {
+  margin-bottom: 1.5rem;
+}
+
+.family-group--single {
+  margin-top: 0.5rem;
+}
+
+.family-role {
+  margin: 0 0 0.55rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  color: #2e3f60;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.family-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.35rem, 3.2vw, 2rem);
+  line-height: 1.25;
+  color: #1f2d4e;
+  font-weight: 500;
+}
+
+.family-and {
+  margin: 0.15rem 0;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: 2.2rem;
+  color: #c8a55a;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.family-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 0.9rem 0 1.5rem;
+  color: #c8a55a;
+  font-size: 0.9rem;
+}
+
+.family-separator span {
+  display: inline-block;
+  transform: rotate(18deg);
+}
+
+@media (max-width: 480px) {
+  .family-title {
+    margin-bottom: 1.2rem;
+  }
+
+  .family-role {
+    letter-spacing: 0.18rem;
+  }
+}

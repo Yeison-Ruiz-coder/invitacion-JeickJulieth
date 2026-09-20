@@ -1,0 +1,226 @@
+.gift-section {
+  position: relative;
+  padding: 2.8rem 1.25rem 0;
+  text-align: center;
+}
+
+.gift-section {
+  position: relative;
+  padding: 2.8rem 1.25rem 0;
+  text-align: center;
+}
+
+.gift-top-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 0 auto 0.8rem;
+  width: min(100%, 190px);
+}
+
+.gift-ornament-line {
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: rgba(184, 142, 53, 0.8);
+}
+
+.gift-ornament-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: #c89a39;
+  transform: rotate(18deg);
+  text-shadow: 0 0 6px rgba(200, 154, 57, 0.35);
+}
+
+.gift-header {
+  margin-bottom: 1.5rem;
+}
+
+.gift-eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: #c4973a;
+  text-align: center;
+}
+
+.gift-title {
+  margin: 0;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(3.2rem, 9vw, 5.5rem);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #1f2d4e;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.2), 1px 1px 0 rgba(31, 45, 78, 0.16);
+}
+
+.gift-intro-card,
+.gift-transfer-card {
+  width: min(100%, 540px);
+  margin: 0 auto;
+  background:white;
+  border: 1px solid rgba(31, 45, 78, 0.08);
+  border-radius: 1.2rem;
+  box-shadow: 0 6px 18px rgba(55, 48, 39, 0.05);
+}
+
+.gift-intro-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.15rem 1.3rem;
+  min-height: 94px;
+}
+
+.gift-box-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-box-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.gift-intro-copy {
+  flex: 1;
+  text-align: left;
+}
+
+.gift-intro-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: #1f2d4e;
+  font-weight: 700;
+}
+
+.gift-intro-sub {
+  margin-top: 0.25rem;
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: #5b544e;
+}
+
+.gift-transfer-card {
+  margin-top: 1.2rem;
+  padding: 1.35rem 1.1rem 1rem;
+}
+
+.gift-transfer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.gift-bank-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #203863 0%, #102342 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+}
+
+.gift-bank-wrap svg {
+  width: 42px;
+  height: 42px;
+}
+
+.gift-transfer-copy {
+  flex: 1;
+}
+
+.gift-transfer-label {
+  margin: 0 0 0.15rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.16rem;
+  text-transform: uppercase;
+  color: #7b5d27;
+  font-weight: 700;
+}
+
+.gift-transfer-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #1f2d4e;
+}
+
+.gift-transfer-number {
+  margin-top: 0.35rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.08rem;
+  color: #27365a;
+  font-weight: 700;
+}
+
+.gift-copy-btn {
+  margin-top: 1rem;
+  width: 100%;
+  border: 1px solid rgba(31, 45, 78, 0.15);
+  background: rgba(229, 225, 220, 0.8);
+  color: #2b2b2b;
+  border-radius: 0.85rem;
+  padding: 0.8rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gift-copy-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(31, 45, 78, 0.08);
+}
+
+.gift-copy-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 480px) {
+  .gift-intro-card {
+    padding: 1rem 0.8rem;
+  }
+
+  .gift-intro-title {
+    font-size: 0.95rem;
+  }
+
+  .gift-intro-sub {
+    font-size: 0.82rem;
+  }
+
+  .gift-transfer-content {
+    gap: 0.8rem;
+  }
+
+  .gift-transfer-number {
+    letter-spacing: 0.04rem;
+    font-size: 0.95rem;
+  }
+}

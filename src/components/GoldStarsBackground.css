@@ -1,0 +1,53 @@
+.gold-stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(143, 107, 42, 0.04));
+  z-index: 0;
+}
+
+.gold-star {
+  position: absolute;
+  top: -18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 232, 168, 1) 0%, rgba(208, 167, 73, 0.95) 35%, rgba(143, 107, 42, 0.7) 100%);
+  box-shadow: 0 0 10px rgba(224, 184, 90, 0.9), 0 0 18px rgba(224, 184, 90, 0.52);
+  transform: rotate(45deg);
+  animation-name: fallStars;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.gold-star::before,
+.gold-star::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.gold-star::before {
+  transform: rotate(45deg) scale(1.15);
+}
+
+.gold-star::after {
+  transform: rotate(-45deg) scale(1.15);
+}
+
+@keyframes fallStars {
+  0% {
+    transform: translate3d(0, -25%, 0) rotate(0deg) scale(0.7);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(14px, 120vh, 0) rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}

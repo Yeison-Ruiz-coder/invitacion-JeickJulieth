@@ -1,0 +1,59 @@
+.countdown-section-card {
+  position: relative;
+  padding: 0 0.85rem;
+}
+
+.countdown-section-eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: #c4973a;
+  text-align: center;
+}
+
+.countdown-section-title {
+  margin: 0;
+  text-align: center;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(3.2rem, 9.2vw, 5.6rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #1f2d4e;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.15), 1px 1px 0 rgba(31, 45, 78, 0.15);
+  -webkit-text-stroke: 0.5px rgba(31, 45, 78, 0.18);
+}
+
+.countdown-section-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+  padding: 0 0.15rem;
+}
+
+.countdown-section-box {
+  background: #ffffff;
+  border: 1px solid rgba(196, 151, 58, 0.42);
+  border-top: 3px solid rgba(196, 151, 58, 0.9);
+  border-radius: 14px;
+  padding: 0.8rem 0.4rem;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(35, 28, 21, 0.06);
+}
+
+.countdown-section-number {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #2a2a2e;
+}
+
+.countdown-section-label {
+  margin-top: 0.3rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: #7d6737;
+}

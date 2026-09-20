@@ -1,0 +1,170 @@
+.recuerdos-section {
+  padding-top: 2.2rem;
+  padding-bottom: 1rem;
+  margin-top: 5.5rem;
+  text-align: center;
+}
+
+.recuerdos-header {
+  text-align: center;
+}
+
+.recuerdos-eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: #c4973a;
+  font-weight: 400;
+}
+
+.recuerdos-title {
+  margin: 0 0 0.3rem;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(3.8rem, 11vw, 6.2rem);
+  line-height: 0.9;
+  color: #1f2d4e;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.12), 1px 1px 0 rgba(31, 45, 78, 0.12);
+  -webkit-text-stroke: 0.4px rgba(31, 45, 78, 0.12);
+}
+
+.recuerdos-signature {
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  color: #c8a55a;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.recuerdos-stage {
+  position: relative;
+  width: min(100%, 420px);
+  height: 430px;
+  margin: 0 auto;
+}
+
+.recuerdo-rotor {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.recuerdo-card {
+  position: absolute;
+  display: block;
+  aspect-ratio: 1 / 1;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transform-origin: center center;
+}
+
+.recuerdo-card-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 174, 109, 0.7);
+  background: #f6f4ef;
+  box-shadow: 0 10px 18px rgba(22, 26, 32, 0.12);
+  transform: rotate(0deg);
+  transform-origin: center center;
+}
+
+.recuerdo-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transform: rotate(0deg) !important;
+  filter: none;
+}
+
+.recuerdo-lightbox {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(13, 12, 11, 0.82);
+  z-index: 50;
+}
+
+.recuerdo-lightbox-image {
+  max-width: min(86vw, 540px);
+  max-height: 82vh;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+}
+
+.recuerdo-lightbox-close,
+.recuerdo-lightbox-nav {
+  position: absolute;
+  border: 0;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.recuerdo-lightbox-close {
+  top: 1.25rem;
+  right: 1.25rem;
+}
+
+.recuerdo-lightbox-prev {
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.recuerdo-lightbox-next {
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.recuerdo-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 102px;
+  height: 102px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(191, 156, 83, 0.8);
+  background: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.recuerdo-center-ring {
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(191, 156, 83, 0.9);
+}
+
+.recuerdo-center-ring::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(191, 156, 83, 0.9);
+}
+
+
