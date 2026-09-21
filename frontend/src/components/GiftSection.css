@@ -68,16 +68,15 @@
   margin: 0 auto;
   background:white;
   border: 1px solid rgba(31, 45, 78, 0.08);
+  border-top: 5px solid rgba(196, 151, 58, 0.92);
   border-radius: 1.2rem;
   box-shadow: 0 6px 18px rgba(55, 48, 39, 0.05);
+  margin-bottom: 4.5rem;
 }
 
 .gift-intro-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1.15rem 1.3rem;
+  display: block;
+  padding: 1.4rem 1.2rem;
   min-height: 94px;
 }
 
@@ -96,23 +95,26 @@
 }
 
 .gift-intro-copy {
-  flex: 1;
-  text-align: left;
+  text-align: center;
 }
 
-.gift-intro-title {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.05rem;
-  line-height: 1.35;
+.gift-message-title {
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 0.95;
   color: #1f2d4e;
-  font-weight: 700;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-shadow: 0.5px 0.5px 0 rgba(31, 45, 78, 0.12), 1px 1px 0 rgba(31, 45, 78, 0.12);
 }
 
-.gift-intro-sub {
-  margin-top: 0.25rem;
-  font-size: 0.94rem;
+.gift-message-text {
+  margin-top: 0.9rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.15rem, 3vw, 1.6rem);
   line-height: 1.5;
-  color: #5b544e;
+  color: #554b44;
+  font-style: italic;
 }
 
 .gift-transfer-card {
@@ -158,18 +160,19 @@
 }
 
 .gift-transfer-name {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 0.95rem;
-  line-height: 1.45;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  line-height: 1.35;
   color: #1f2d4e;
 }
 
 .gift-transfer-number {
   margin-top: 0.35rem;
-  font-size: 1.05rem;
-  letter-spacing: 0.08rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  letter-spacing: 0.04rem;
   color: #27365a;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .gift-copy-btn {
@@ -205,14 +208,6 @@
 @media (max-width: 480px) {
   .gift-intro-card {
     padding: 1rem 0.8rem;
-  }
-
-  .gift-intro-title {
-    font-size: 0.95rem;
-  }
-
-  .gift-intro-sub {
-    font-size: 0.82rem;
   }
 
   .gift-transfer-content {

@@ -45,6 +45,7 @@
   width: min(100%, 420px);
   height: 430px;
   margin: 0 auto;
+  margin-bottom: 4.5rem;
 }
 
 .recuerdo-rotor {

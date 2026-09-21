@@ -64,7 +64,7 @@ function RecuerdosSection() {
       <div className="recuerdos-header">
         <div className="recuerdos-eyebrow">Nuestros Momentos</div>
         <h2 className="recuerdos-title">Recuerdos</h2>
-        <div className="recuerdos-signature">Julieth &amp; Jeick</div>
+        <div className="recuerdos-signature">Jeick &amp; Fernanda</div>
       </div>
 
       <div className="recuerdos-stage" aria-label="Galería de fotos">

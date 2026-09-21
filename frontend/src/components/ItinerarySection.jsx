@@ -42,66 +42,37 @@ function ItinerarySection() {
         <div className="itinerary-item">
           <div className="itinerary-marker"><div className="itinerary-gem" /></div>
           <div className="itinerary-copy">
-            <div className="itinerary-time">12:00</div>
-            <div className="itinerary-event">Ceremonia Religiosa</div>
+            <div className="itinerary-time">4:00 pm</div>
+            <div className="itinerary-event">Llegada de invitados</div>
           </div>
         </div>
 
         <div className="itinerary-item">
           <div className="itinerary-marker"><div className="itinerary-gem itinerary-gem-mid" /></div>
           <div className="itinerary-copy">
-            <div className="itinerary-time">1:15</div>
-            <div className="itinerary-event">Sesión de Fotos</div>
+            <div className="itinerary-time">5:00 pm</div>
+            <div className="itinerary-event">Ceremonia Cristiana</div>
           </div>
         </div>
 
         <div className="itinerary-item">
           <div className="itinerary-marker"><div className="itinerary-gem itinerary-gem-navy" /></div>
           <div className="itinerary-copy">
-            <div className="itinerary-time">2:00</div>
-            <div className="itinerary-event">Traslado al Rancho</div>
+            <div className="itinerary-event">Sesión de fotos</div>
           </div>
         </div>
 
         <div className="itinerary-item">
           <div className="itinerary-marker"><div className="itinerary-gem" /></div>
           <div className="itinerary-copy">
-            <div className="itinerary-time">2:30</div>
-            <div className="itinerary-event">Recepción &amp; Bebidas</div>
-          </div>
-        </div>
-
-        <div className="itinerary-item">
-          <div className="itinerary-marker"><div className="itinerary-gem itinerary-gem-mid" /></div>
-          <div className="itinerary-copy">
-            <div className="itinerary-time">3:30</div>
-            <div className="itinerary-event">Comida Fuerte</div>
-          </div>
-        </div>
-
-        <div className="itinerary-item">
-          <div className="itinerary-marker"><div className="itinerary-gem itinerary-gem-navy" /></div>
-          <div className="itinerary-copy">
-            <div className="itinerary-time">5:00</div>
-            <div className="itinerary-event">Entretenimiento</div>
-          </div>
-        </div>
-
-        <div className="itinerary-item">
-          <div className="itinerary-marker"><div className="itinerary-gem" /></div>
-          <div className="itinerary-copy">
-            <div className="itinerary-time">—</div>
-            <div className="itinerary-event">Vals · Víbora · Ramo</div>
-            <div className="itinerary-sub">Pastel &amp; Brindis</div>
+            <div className="itinerary-event">Cena</div>
           </div>
         </div>
 
         <div className="itinerary-item itinerary-item--end">
-          <div className="itinerary-marker"><div className="itinerary-gem" /></div>
+          <div className="itinerary-marker"><div className="itinerary-gem itinerary-gem-mid" /></div>
           <div className="itinerary-copy">
-            <div className="itinerary-time">8:30</div>
-            <div className="itinerary-event">Fiesta</div>
-            <div className="itinerary-sub">Hasta la 1:30 a.m.</div>
+            <div className="itinerary-event">Entretenimiento</div>
           </div>
         </div>
       </div>

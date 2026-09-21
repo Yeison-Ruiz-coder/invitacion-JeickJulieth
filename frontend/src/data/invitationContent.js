@@ -1,8 +1,8 @@
 export const invitationData = {
   hero: {
-    date: 'Sábado · 19 de Diciembre · 2026',
-    names: ['Jeick Danier Moreno', 'Julieth Fernanda Martínez'],
-    location: 'Popayán · Cauca · Colombia',
+    date: 'Sábado · 26 de Diciembre · 2026',
+    names: ['Jeick Danier Moreno', 'Fernanda Martínez'],
+    location: 'Santander de Quilichao · Cauca · Colombia',
     inviteLabel: 'Esta invitación es para',
     inviteName: 'Familia García',
     invitePasses: '2 pases · 4 personas',
@@ -38,16 +38,13 @@ export const invitationData = {
     },
   ],
   googleCalendarLink:
-    'https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Boda%20de%20Cristal%20%26%20Humberto&amp;dates=20261219T180000Z/20261220T073000Z&amp;details=Ceremonia%20Religiosa%3A%2012%3A00%20pm%20%7C%20Recepci%C3%B3n%20en%20Parque%20Caldas%2C%20Popay%C3%A1n%20%E2%80%94%20Cauca%2C%20Colombia&amp;location=Popay%C3%A1n%2C%20Cauca%2C%20Colombia',
+    'https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Boda%20de%20Jeick%20%26%20Fernanda&amp;dates=20261226T180000Z/20261227T073000Z&amp;details=Ceremonia%20y%20Celebraci%C3%B3n%20en%20Club%20Campestre%20Mar%20y%20Cielo%2C%20Santander%20de%20Quilichao%2C%20Cauca%2C%20Colombia&amp;location=Club%20Campestre%20Mar%20y%20Cielo%2C%20Santander%20de%20Quilichao%2C%20Cauca%2C%20Colombia',
   itinerary: [
-    ['12:00', 'Ceremonia Religiosa'],
-    ['1:15', 'Sesión de Fotos'],
-    ['2:00', 'Traslado al Rancho'],
-    ['2:30', 'Recepción & Bebidas'],
-    ['3:30', 'Comida Fuerte'],
-    ['5:00', 'Entretenimiento'],
-    ['—', 'Vals · Víbora · Ramo', 'Pastel & Brindis'],
-    ['8:30', 'Fiesta', 'Hasta la 1:30 a.m.'],
+    ['4:00 pm', 'Llegada de invitados'],
+    ['5:00 pm', 'Ceremonia Cristiana'],
+    ['—', 'Sesión de fotos'],
+    ['—', 'Cena'],
+    ['—', 'Entretenimiento'],
   ],
   family: [
     {
@@ -62,18 +59,18 @@ export const invitationData = {
   gallery: {
     eyebrow: 'Nuestros Momentos',
     title: 'Recuerdos',
-    subtitle: 'Jeick & Julieth',
+    subtitle: 'Jeick & Fernanda',
   },
   hotel: {
     name: 'Hotel Real San Diego',
-    note: 'Al reservar, menciona que eres invitado/a a la boda de Julieth y Jeick para recibir beneficios especiales.',
+    note: 'Al reservar, menciona que eres invitado/a a la boda de Fernanda y Jeick para recibir beneficios especiales.',
     phone: '+523951292026',
     phoneLabel: '395 129 2026',
     map: 'https://maps.app.goo.gl/9J9xEB5WXQSZLZrp7?g_st=ic',
   },
   footer: {
-    names: 'Jeick & Julieth',
-    place: '19 · Diciembre · 2026 · Popayán · Cauca',
+    names: 'Jeick & Fernanda',
+    place: '26 · Diciembre · 2026 · Santander de Quilichao · Cauca',
     author: 'Invitación creada por',
     authorHandle: '@elysium.invitaciones',
     authorLink: 'https://www.instagram.com/elysium.invitaciones',

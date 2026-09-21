@@ -23,7 +23,7 @@ function DressCodeSection() {
 
       <div className="dress-code-note">Formal &amp; elegante</div>
       <div className="dress-code-warn">
-        ✦ &nbsp; El blanco se reserva para la novia &nbsp; ✦
+        ✦ &nbsp; Solo se permite blanco y azul marino &nbsp; ✦
       </div>
 
       <div className="dress-code-figures" id="dcFigs">
@@ -50,9 +50,9 @@ function DressCodeSection() {
           </svg>
           <div className="dress-code-figure-name">Caballero</div>
           <div className="dress-code-figure-hint">
-            Traje azul marino
+            Blanco o azul marino
             <br />
-            con camisa blanca
+            estilo formal
           </div>
         </div>
 
@@ -79,7 +79,7 @@ function DressCodeSection() {
           </svg>
           <div className="dress-code-figure-name">Dama</div>
           <div className="dress-code-figure-hint">
-            Traje oscuro
+            Blanco o azul marino
             <br />
             estilo formal
           </div>
