@@ -4,6 +4,18 @@ import "./AdminPage.css";
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
+async function readResponseBody(response) {
+  const body = await response.text();
+
+  if (!body) return {};
+
+  try {
+    return JSON.parse(body);
+  } catch {
+    return { message: body };
+  }
+}
+
 function AdminPage() {
   const [session, setSession] = useState(null);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -28,10 +40,11 @@ function AdminPage() {
     );
 
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
+      const errorData = await readResponseBody(response);
       throw new Error(errorData.message || errorData.hint || `No se pudieron cargar las respuestas (${response.status})`);
     }
-    setResponses(await response.json());
+    const data = await readResponseBody(response);
+    setResponses(Array.isArray(data) ? data : []);
   };
 
   const handleLogin = async (event) => {
@@ -40,6 +53,10 @@ function AdminPage() {
     setIsLoading(true);
 
     try {
+      if (!supabaseUrl || !supabaseAnonKey) {
+        throw new Error("Faltan las variables de Supabase en Vercel. Configura VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY.");
+      }
+
       const response = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=password`, {
         method: "POST",
         headers: {
@@ -49,7 +66,7 @@ function AdminPage() {
         body: JSON.stringify(credentials),
       });
 
-      const data = await response.json();
+      const data = await readResponseBody(response);
       if (!response.ok) {
         const errorMessage = data.error_description || data.msg || data.message || "Correo o contraseña incorrectos";
         throw new Error(errorMessage);
