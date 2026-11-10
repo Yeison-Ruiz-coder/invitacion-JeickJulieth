@@ -178,12 +178,11 @@
 .itinerary-time {
   display: block;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.4rem, 5vw, 3.2rem);
-  line-height: 0.9;
-  color: #2f2a2a;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  transform: translateY(-2px);
+  font-size: 1.3rem;
+  line-height: 1.1;
+  color: #1f2d4e;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .itinerary-event {

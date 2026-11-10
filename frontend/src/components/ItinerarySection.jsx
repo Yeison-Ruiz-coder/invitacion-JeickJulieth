@@ -1,6 +1,19 @@
 import { useEffect, useRef } from "react";
 import "./ItinerarySection.css";
 
+const itineraryItems = [
+  { time: "04:30 a 05:00 p.m.", event: "Recepción y Bienvenida", detail: "Deja tu mensaje y firma el libro de invitados." },
+  { time: "05:00 a 06:30 p.m.", event: "Ceremonia religiosa" },
+  { time: "06:30 a 07:00 p.m.", event: "Fotos de los novios en el salón de eventos" },
+  { time: "07:00 a 07:30 p.m.", event: "Recepción y brindis familiar" },
+  { time: "07:30 a 08:00 p.m.", event: "Lanzamiento del ramo de la novia" },
+  { time: "08:00 a 09:00 p.m.", event: "Cena" },
+  { time: "09:00 a 09:30 p.m.", event: "Partida de pastel" },
+  { time: "09:30 a 10:00 p.m.", event: "Fotos con invitados" },
+  { time: "10:00 a 10:30 p.m.", event: "Dinámica en pareja y familia" },
+  { time: "10:30 a 11:00 p.m.", event: "Termina la celebración de la boda" },
+];
+
 function ItinerarySection() {
   const itineraryTrackRef = useRef(null);
 
@@ -38,43 +51,21 @@ function ItinerarySection() {
       </div>
       <div ref={itineraryTrackRef} className="itinerary-track">
         <div className="itinerary-glow" />
-
-        <div className="itinerary-item">
-          <div className="itinerary-marker"><div className="itinerary-gem" /></div>
-          <div className="itinerary-copy">
-            <div className="itinerary-time">4:00 pm</div>
-            <div className="itinerary-event">Llegada de invitados</div>
+        {itineraryItems.map((item, index) => (
+          <div
+            key={item.time}
+            className={`itinerary-item${index === itineraryItems.length - 1 ? " itinerary-item--end" : ""}`}
+          >
+            <div className="itinerary-marker">
+              <div className={`itinerary-gem ${index % 2 === 1 ? "itinerary-gem-navy" : ""}`} />
+            </div>
+            <div className="itinerary-copy">
+              <div className="itinerary-time">{item.time}</div>
+              <div className="itinerary-event">{item.event}</div>
+              {item.detail && <div className="itinerary-sub">{item.detail}</div>}
+            </div>
           </div>
-        </div>
-
-        <div className="itinerary-item">
-          <div className="itinerary-marker"><div className="itinerary-gem itinerary-gem-mid" /></div>
-          <div className="itinerary-copy">
-            <div className="itinerary-time">5:00 pm</div>
-            <div className="itinerary-event">Ceremonia Cristiana</div>
-          </div>
-        </div>
-
-        <div className="itinerary-item">
-          <div className="itinerary-marker"><div className="itinerary-gem itinerary-gem-navy" /></div>
-          <div className="itinerary-copy">
-            <div className="itinerary-event">Sesión de fotos</div>
-          </div>
-        </div>
-
-        <div className="itinerary-item">
-          <div className="itinerary-marker"><div className="itinerary-gem" /></div>
-          <div className="itinerary-copy">
-            <div className="itinerary-event">Cena</div>
-          </div>
-        </div>
-
-        <div className="itinerary-item itinerary-item--end">
-          <div className="itinerary-marker"><div className="itinerary-gem itinerary-gem-mid" /></div>
-          <div className="itinerary-copy">
-            <div className="itinerary-event">Entretenimiento</div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

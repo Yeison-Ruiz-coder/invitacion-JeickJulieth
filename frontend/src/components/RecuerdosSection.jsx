@@ -2,18 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import "./RecuerdosSection.css";
 
 const recuerdoFotos = [
-  { src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80", hour: 12, width: "32%" },
-  { src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80", hour: 1, width: "33%" },
-  { src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80", hour: 2, width: "31%" },
-  { src: "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80", hour: 3, width: "30%" },
-  { src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80", hour: 4, width: "34%" },
-  { src: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80", hour: 5, width: "30%" },
-  { src: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80", hour: 6, width: "29%" },
-  { src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80", hour: 7, width: "31%" },
-  { src: "https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=900&q=80", hour: 8, width: "28%" },
-  { src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80", hour: 9, width: "30%" },
-  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1789890825/6163a752-2257-45f3-80fd-72ed02bc9a15_yuchd6.jpg", hour: 10, width: "29%" },
-  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1789890546/IMG-20250506-WA0019_q7jkap.jpg", hour: 11, width: "32%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332982/WhatsApp_Image_2026-11-10_at_12.46.41_PM_1_ltm6zd.jpg", hour: 12, width: "32%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332982/WhatsApp_Image_2026-11-10_at_12.46.41_PM_jvq05u.jpg", hour: 12, width: "32%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332982/WhatsApp_Image_2026-11-10_at_12.46.42_PM_1_u8i8wl.jpg", hour: 1, width: "33%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332982/WhatsApp_Image_2026-11-10_at_12.46.41_PM_2_rdbatz.jpg ", hour: 2, width: "31%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332982/WhatsApp_Image_2026-11-10_at_12.46.42_PM_2_syfvpb.jpg", hour: 3, width: "30%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332983/WhatsApp_Image_2026-11-10_at_12.46.42_PM_ekqpux.jpg", hour: 4, width: "34%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332983/WhatsApp_Image_2026-11-10_at_12.46.42_PM_6_cvwjgp.jpg", hour: 5, width: "30%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332982/WhatsApp_Image_2026-11-10_at_12.46.42_PM_3_nmoybe.jpg", hour: 6, width: "29%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332983/WhatsApp_Image_2026-11-10_at_12.46.42_PM_5_dmhu75.jpg", hour: 7, width: "31%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332983/WhatsApp_Image_2026-11-10_at_12.46.43_PM_1_gcwozj.jpg", hour: 8, width: "28%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332984/WhatsApp_Image_2026-11-10_at_12.46.43_PM_2_ichhvr.jpg", hour: 9, width: "30%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332985/WhatsApp_Image_2026-11-10_at_12.46.43_PM_swhpvb.jpg", hour: 10, width: "29%" },
+  { src: "https://res.cloudinary.com/dixyebg5i/image/upload/v1794332982/WhatsApp_Image_2026-11-10_at_12.46.42_PM_4_jm2dvu.jpg", hour: 11, width: "32%" },
 ];
 
 function RecuerdosSection() {
