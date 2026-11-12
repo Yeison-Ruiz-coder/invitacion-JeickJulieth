@@ -312,13 +312,21 @@ function InvitationPage() {
           </p>
           <div className="album-qr-wrap">
             <div className="album-qr-frame">
-              <img
-                src="/Imagenes/QR-FOTOS-COMPARTIDAS.png"
-                alt="QR Álbum de fotos #jeickyfernanda"
-                width="180"
-                height="180"
-                loading="lazy"
-              />
+              <a
+                href="https://www.instagram.com/explore/tags/jeickyfernanda"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Abrir álbum de fotos #jeickyfernanda"
+                title="Abrir álbum de fotos"
+              >
+                <img
+                  src="/Imagenes/QR-FOTOS-COMPARTIDAS.png"
+                  alt="QR Álbum de fotos #jeickyfernanda"
+                  width="180"
+                  height="180"
+                  loading="lazy"
+                />
+              </a>
             </div>
           </div>
           <div className="album-hashtag">#jeickyfernanda</div>
