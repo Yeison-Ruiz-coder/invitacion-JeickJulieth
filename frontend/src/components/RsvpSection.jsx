@@ -4,17 +4,21 @@ import "./RsvpSection.css";
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const rsvpDeadline = new Date("2026-12-11T23:59:59-05:00");
-const responseLockKey = "jeick-fernanda-rsvp-enviado";
 
 function RsvpSection() {
   const isDeadlinePassed = Date.now() > rsvpDeadline.getTime();
-  const [hasSubmitted, setHasSubmitted] = useState(
-    () => localStorage.getItem(responseLockKey) === "true"
-  );
   const [respuesta, setRespuesta] = useState(null);
-  const [form, setForm] = useState({ nombre: "", cedula: "", celular: "" });
+  const [form, setForm] = useState({
+    nombre: "",
+    cedula: "",
+    celular: "",
+    modalidad: "solo",
+    pareja: "",
+    hijos: [],
+  });
   const [status, setStatus] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const handleChoice = (choice) => {
     if (hasSubmitted || isDeadlinePassed) return;
@@ -32,6 +36,24 @@ function RsvpSection() {
     setForm((current) => ({ ...current, [name]: sanitizedValue }));
   };
 
+  const handleChildChange = (index, value) => {
+    setForm((current) => ({
+      ...current,
+      hijos: current.hijos.map((child, childIndex) => childIndex === index ? value : child),
+    }));
+  };
+
+  const addChild = () => {
+    setForm((current) => ({ ...current, hijos: [...current.hijos, ""] }));
+  };
+
+  const removeChild = (index) => {
+    setForm((current) => ({
+      ...current,
+      hijos: current.hijos.filter((_, childIndex) => childIndex !== index),
+    }));
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (hasSubmitted || isDeadlinePassed) return;
@@ -40,6 +62,21 @@ function RsvpSection() {
 
     if (!supabaseUrl || !supabaseAnonKey) {
       setStatus("La confirmación aún no está conectada.");
+      return;
+    }
+
+    const acompanantes = respuesta === "asistira" && form.modalidad === "familia"
+      ? [
+          ...(form.pareja.trim() ? [{ tipo: "pareja", nombre: form.pareja.trim() }] : []),
+          ...form.hijos
+            .map((nombre) => nombre.trim())
+            .filter(Boolean)
+            .map((nombre) => ({ tipo: "hijo", nombre })),
+        ]
+      : [];
+
+    if (respuesta === "asistira" && form.modalidad === "familia" && !acompanantes.length) {
+      setStatus("Agrega el nombre de tu pareja o de al menos un hijo/a.");
       return;
     }
 
@@ -59,16 +96,20 @@ function RsvpSection() {
           cedula: form.cedula.trim(),
           celular: form.celular.trim(),
           respuesta,
+          acompanantes,
         }),
       });
 
       if (!response.ok) {
-        throw new Error("No se pudo guardar la respuesta");
+        const error = await response.json().catch(() => ({}));
+        if (error.code === "23505") {
+          setStatus("Ya existe una respuesta registrada con esa cédula. Si necesitas corregirla, comunícate con los novios.");
+          return;
+        }
+        throw new Error(error.message || "No se pudo guardar la respuesta");
       }
 
       setStatus("Gracias, tu respuesta fue registrada.");
-      setForm({ nombre: "", cedula: "", celular: "" });
-      localStorage.setItem(responseLockKey, "true");
       setHasSubmitted(true);
     } catch {
       setStatus("No pudimos guardar tu respuesta. Intenta nuevamente.");
@@ -88,7 +129,7 @@ function RsvpSection() {
           </p>
         ) : hasSubmitted ? (
           <p className="rsvp-status" role="status">
-            Tu respuesta ya fue registrada desde este dispositivo.
+            Tu respuesta ya fue registrada.
           </p>
         ) : (
           <div className="rsvp-choice-grid">
@@ -152,6 +193,75 @@ function RsvpSection() {
               pattern="[0-9]+"
               autoComplete="tel"
             />
+            {respuesta === "asistira" && (
+              <>
+                <fieldset className="rsvp-attendance-group">
+                  <legend className="rsvp-label">¿Cómo asistirás?</legend>
+                  <label className="rsvp-option">
+                    <input
+                      type="radio"
+                      name="modalidad"
+                      value="solo"
+                      checked={form.modalidad === "solo"}
+                      onChange={handleChange}
+                    />
+                    Asistiré solo/a
+                  </label>
+                  <label className="rsvp-option">
+                    <input
+                      type="radio"
+                      name="modalidad"
+                      value="familia"
+                      checked={form.modalidad === "familia"}
+                      onChange={handleChange}
+                    />
+                    Asistiré con mi familia
+                  </label>
+                </fieldset>
+                {form.modalidad === "familia" && (
+                  <div className="rsvp-family-fields">
+                    <label className="rsvp-label" htmlFor="rsvp-pareja">
+                      Nombre de tu pareja (opcional)
+                    </label>
+                    <input
+                      id="rsvp-pareja"
+                      name="pareja"
+                      type="text"
+                      value={form.pareja}
+                      onChange={handleChange}
+                      maxLength={120}
+                      autoComplete="off"
+                    />
+                    <div className="rsvp-children-heading">
+                      <span className="rsvp-label">Nombres de tus hijos (opcional)</span>
+                      <button className="rsvp-add-child" type="button" onClick={addChild}>
+                        Agregar hijo/a
+                      </button>
+                    </div>
+                    {form.hijos.map((nombre, index) => (
+                      <div className="rsvp-child-row" key={`hijo-${index}`}>
+                        <input
+                          aria-label={`Nombre del hijo o hija ${index + 1}`}
+                          type="text"
+                          value={nombre}
+                          onChange={(event) => handleChildChange(index, event.target.value)}
+                          maxLength={120}
+                          autoComplete="off"
+                        />
+                        <button
+                          className="rsvp-remove-child"
+                          type="button"
+                          onClick={() => removeChild(index)}
+                          aria-label={`Quitar hijo o hija ${index + 1}`}
+                        >
+                          Quitar
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
             <button className="rsvp-submit-btn" type="submit" disabled={isSending}>
               {isSending ? "Guardando..." : "Enviar respuesta"}
             </button>

@@ -30,7 +30,7 @@ function AdminPage() {
 
   const loadResponses = async (accessToken) => {
     const response = await fetch(
-      `${supabaseUrl}/rest/v1/rsvp_responses?select=id,nombre,cedula,celular,respuesta,creado_en&order=creado_en.desc`,
+      `${supabaseUrl}/rest/v1/rsvp_responses?select=id,nombre,cedula,celular,respuesta,acompanantes,creado_en&order=creado_en.desc`,
       {
         headers: {
           apikey: supabaseAnonKey,
@@ -129,7 +129,9 @@ function AdminPage() {
     );
   }
 
-  const attending = responses.filter((item) => item.respuesta === "asistira").length;
+  const attending = responses
+    .filter((item) => item.respuesta === "asistira")
+    .reduce((total, item) => total + 1 + (item.acompanantes?.length || 0), 0);
   const notAttending = responses.filter((item) => item.respuesta === "no_asistira").length;
 
   return (
@@ -148,17 +150,18 @@ function AdminPage() {
           </div>
         </header>
         <div className="admin-stats">
-          <div><strong>{attending}</strong><span>Asistirán</span></div>
+          <div><strong>{attending}</strong><span>Personas que asistirán</span></div>
           <div><strong>{notAttending}</strong><span>No asistirán</span></div>
           <div><strong>{responses.length}</strong><span>Total respuestas</span></div>
         </div>
         <div className="admin-table-wrap">
           <table>
-            <thead><tr><th>Nombre</th><th>Cédula</th><th>Celular</th><th>Respuesta</th><th>Fecha</th></tr></thead>
+            <thead><tr><th>Nombre</th><th>Cédula</th><th>Celular</th><th>Acompañantes</th><th>Respuesta</th><th>Fecha</th></tr></thead>
             <tbody>
               {responses.map((item) => (
                 <tr key={item.id}>
                   <td>{item.nombre}</td><td>{item.cedula}</td><td>{item.celular}</td>
+                  <td>{item.acompanantes?.map((acompanante) => acompanante.nombre).join(", ") || "—"}</td>
                   <td><span className={`admin-response ${item.respuesta}`}>{item.respuesta === "asistira" ? "Asistirá" : "No asistirá"}</span></td>
                   <td>{new Date(item.creado_en).toLocaleDateString("es-CO")}</td>
                 </tr>

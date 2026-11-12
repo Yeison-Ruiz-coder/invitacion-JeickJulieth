@@ -4,8 +4,15 @@ create table if not exists public.rsvp_responses (
   cedula text not null,
   celular text not null,
   respuesta text not null check (respuesta in ('asistira', 'no_asistira')),
+  acompanantes jsonb not null default '[]'::jsonb check (jsonb_typeof(acompanantes) = 'array'),
   creado_en timestamptz not null default now()
 );
+
+alter table public.rsvp_responses
+add column if not exists acompanantes jsonb not null default '[]'::jsonb;
+
+create unique index if not exists rsvp_responses_cedula_unique
+on public.rsvp_responses (trim(cedula));
 
 alter table public.rsvp_responses enable row level security;
 
@@ -26,6 +33,7 @@ with check (
   and char_length(trim(cedula)) between 5 and 30
   and char_length(trim(celular)) between 7 and 30
   and respuesta in ('asistira', 'no_asistira')
+  and jsonb_typeof(acompanantes) = 'array'
   and now() <= timestamptz '2026-12-11 23:59:59-05'
 );
 

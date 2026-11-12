@@ -26,7 +26,7 @@ Configura `frontend` como **Root Directory** del proyecto de Vercel. Vercel usar
 
 ## Supabase
 
-Ejecuta `backend/schema.sql` en el SQL Editor de Supabase. La tabla guardara nombre, cedula, celular, respuesta y fecha de registro.
+Ejecuta `backend/schema.sql` en el SQL Editor de Supabase. La tabla guarda los datos del titular, su respuesta y la lista de acompañantes. La cédula del titular es única; si ya existen cédulas duplicadas en la tabla, resuélvelas antes de ejecutar el índice único.
 
 En `frontend/.env` configura la URL del proyecto y la clave publica `anon` usando `frontend/.env.example` como referencia. No uses la clave `service_role` en el frontend.
 

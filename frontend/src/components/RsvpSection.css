@@ -65,6 +65,67 @@
   color: #2d2a28;
 }
 
+.rsvp-attendance-group {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.rsvp-label {
+  color: #1f2d4e;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.rsvp-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #2d2a28;
+}
+
+.rsvp-form .rsvp-option input {
+  width: auto;
+  accent-color: #203863;
+}
+
+.rsvp-family-fields {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.35rem;
+  padding: 0.9rem;
+  border: 1px solid rgba(196, 151, 58, 0.3);
+  border-radius: 12px;
+  background: rgba(249, 246, 242, 0.7);
+}
+
+.rsvp-children-heading,
+.rsvp-child-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.rsvp-add-child,
+.rsvp-remove-child {
+  border: 0;
+  background: transparent;
+  color: #203863;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.rsvp-child-row input {
+  min-width: 0;
+}
+
 .rsvp-submit-btn {
   margin-top: 0.75rem;
 }

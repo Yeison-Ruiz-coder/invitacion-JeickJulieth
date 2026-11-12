@@ -121,29 +121,28 @@
 
 .itinerary-item {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
   align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
+  column-gap: 0.4rem;
   width: 100%;
-  min-height: 94px;
-  padding: 0.5rem 0;
+  min-height: 108px;
+  padding: 0.85rem 0;
   z-index: 1;
-  text-align: center;
 }
 
 .itinerary-item--end {
-  min-height: 126px;
+  min-height: 108px;
 }
 
 .itinerary-marker {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
   height: 32px;
-  margin-bottom: 0;
   position: relative;
   z-index: 2;
 }
@@ -170,15 +169,31 @@
   position: relative;
   z-index: 1;
   display: flex;
+  grid-column: 3;
+  grid-row: 1;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.38rem;
+  width: 100%;
+}
+
+.itinerary-content {
+  display: contents;
+}
+
+.itinerary-icon {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
 }
 
 .itinerary-time {
   display: block;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   line-height: 1.1;
   color: #1f2d4e;
   font-weight: 600;
@@ -189,9 +204,9 @@
   display: block;
   color: #2e2a27;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 400;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1.15;
 }
@@ -199,8 +214,29 @@
 .itinerary-sub {
   display: block;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: #7e6431;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+@media (max-width: 380px) {
+  .itinerary-item {
+    grid-template-columns: minmax(0, 1fr) 26px minmax(0, 1fr);
+    column-gap: 0.25rem;
+  }
+
+  .itinerary-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .itinerary-time {
+    font-size: 1.05rem;
+  }
+
+  .itinerary-event {
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+  }
 }
