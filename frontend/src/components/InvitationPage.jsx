@@ -313,7 +313,7 @@ function InvitationPage() {
           <div className="album-qr-wrap">
             <div className="album-qr-frame">
               <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&amp;color=1E3A6E&amp;bgcolor=F0EDE6&amp;data=https://www.instagram.com/explore/tags/jeickyfernanda"
+                src="/Imagenes/QR-FOTOS-COMPARTIDAS.png"
                 alt="QR Álbum de fotos #jeickyfernanda"
                 width="180"
                 height="180"
