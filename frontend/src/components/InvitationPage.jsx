@@ -106,7 +106,16 @@ function InvitationPage() {
     <main className="invitation-page">
       <div className="wrap">
         <section className="hero" aria-label="Encabezado principal">
-          <div className="hero-bg" />
+          <video
+            className="hero-bg"
+            src="/videos/WhatsApp%20Video%202026-11-12%20at%209.48.51%20PM.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-label="Video de apertura"
+          />
           <div className="hero-veil" />
           <div className="hero-bottom">
             <div className="hero-eyebrow" id="hEb">

@@ -14,11 +14,14 @@ function RsvpSection() {
     celular: "",
     modalidad: "solo",
     pareja: "",
+    parejaCedula: "",
+    parejaCelular: "",
     hijos: [],
   });
   const [status, setStatus] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleChoice = (choice) => {
     if (hasSubmitted || isDeadlinePassed) return;
@@ -29,7 +32,7 @@ function RsvpSection() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    const sanitizedValue = name === "cedula" || name === "celular"
+    const sanitizedValue = ["cedula", "celular", "parejaCedula", "parejaCelular"].includes(name)
       ? value.replace(/\D/g, "")
       : value;
 
@@ -54,7 +57,24 @@ function RsvpSection() {
     }));
   };
 
-  const handleSubmit = async (event) => {
+  const getAcompanantes = () => respuesta === "asistira" && form.modalidad === "familia"
+    ? [
+        ...(form.pareja.trim()
+          ? [{
+              tipo: "pareja",
+              nombre: form.pareja.trim(),
+              cedula: form.parejaCedula.trim(),
+              celular: form.parejaCelular.trim(),
+            }]
+          : []),
+        ...form.hijos
+          .map((nombre) => nombre.trim())
+          .filter(Boolean)
+          .map((nombre) => ({ tipo: "hijo", nombre })),
+      ]
+    : [];
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (hasSubmitted || isDeadlinePassed) return;
 
@@ -65,22 +85,38 @@ function RsvpSection() {
       return;
     }
 
-    const acompanantes = respuesta === "asistira" && form.modalidad === "familia"
-      ? [
-          ...(form.pareja.trim() ? [{ tipo: "pareja", nombre: form.pareja.trim() }] : []),
-          ...form.hijos
-            .map((nombre) => nombre.trim())
-            .filter(Boolean)
-            .map((nombre) => ({ tipo: "hijo", nombre })),
-        ]
-      : [];
+    const datosPareja = [
+      form.pareja.trim(),
+      form.parejaCedula.trim(),
+      form.parejaCelular.trim(),
+    ];
+    const parejaIncompleta =
+      respuesta === "asistira" &&
+      form.modalidad === "familia" &&
+      datosPareja.some(Boolean) &&
+      datosPareja.some((dato) => !dato);
+
+    if (parejaIncompleta) {
+      setStatus("Completa el nombre, la cédula y el celular de tu pareja.");
+      return;
+    }
+
+    const acompanantes = getAcompanantes();
 
     if (respuesta === "asistira" && form.modalidad === "familia" && !acompanantes.length) {
       setStatus("Agrega el nombre de tu pareja o de al menos un hijo/a.");
       return;
     }
 
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmSubmit = async () => {
+    if (hasSubmitted || isDeadlinePassed || isSending) return;
+
+    setShowConfirmation(false);
     setIsSending(true);
+    const acompanantes = getAcompanantes();
 
     try {
       const response = await fetch(`${supabaseUrl}/rest/v1/rsvp_responses`, {
@@ -103,7 +139,7 @@ function RsvpSection() {
       if (!response.ok) {
         const error = await response.json().catch(() => ({}));
         if (error.code === "23505") {
-          setStatus("Ya existe una respuesta registrada con esa cédula. Si necesitas corregirla, comunícate con los novios.");
+          setStatus("La cédula del titular o de su pareja ya está registrada. Si necesitas corregirla, comunícate con los novios.");
           return;
         }
         throw new Error(error.message || "No se pudo guardar la respuesta");
@@ -221,7 +257,7 @@ function RsvpSection() {
                 {form.modalidad === "familia" && (
                   <div className="rsvp-family-fields">
                     <label className="rsvp-label" htmlFor="rsvp-pareja">
-                      Nombre de tu pareja (opcional)
+                      Datos de tu pareja (opcional)
                     </label>
                     <input
                       id="rsvp-pareja"
@@ -229,7 +265,31 @@ function RsvpSection() {
                       type="text"
                       value={form.pareja}
                       onChange={handleChange}
+                      placeholder="Nombre completo"
                       maxLength={120}
+                      autoComplete="off"
+                    />
+                    <input
+                      aria-label="Cédula de tu pareja"
+                      name="parejaCedula"
+                      type="text"
+                      value={form.parejaCedula}
+                      onChange={handleChange}
+                      placeholder="Cédula"
+                      maxLength={30}
+                      inputMode="numeric"
+                      pattern="[0-9]+"
+                    />
+                    <input
+                      aria-label="Celular de tu pareja"
+                      name="parejaCelular"
+                      type="tel"
+                      value={form.parejaCelular}
+                      onChange={handleChange}
+                      placeholder="Celular"
+                      maxLength={30}
+                      inputMode="numeric"
+                      pattern="[0-9]+"
                       autoComplete="off"
                     />
                     <div className="rsvp-children-heading">
@@ -271,6 +331,40 @@ function RsvpSection() {
         {status && <p className="rsvp-status" role="status">{status}</p>}
         <p className="rsvp-deadline">Fecha límite: 11 de diciembre de 2026</p>
       </div>
+      {showConfirmation && (
+        <div className="rsvp-confirmation-backdrop">
+          <section
+            className="rsvp-confirmation"
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="rsvp-confirmation-title"
+            aria-describedby="rsvp-confirmation-description"
+          >
+            <h3 id="rsvp-confirmation-title">¿Confirmas el envío?</h3>
+            <p id="rsvp-confirmation-description">
+              Revisa tus datos antes de registrar tu respuesta.
+            </p>
+            <div className="rsvp-confirmation-actions">
+              <button
+                className="rsvp-confirmation-accept"
+                type="button"
+                onClick={handleConfirmSubmit}
+                disabled={isSending}
+              >
+                Aceptar y enviar
+              </button>
+              <button
+                className="rsvp-confirmation-edit"
+                type="button"
+                onClick={() => setShowConfirmation(false)}
+                disabled={isSending}
+              >
+                Seguir editando
+              </button>
+            </div>
+          </section>
+        </div>
+      )}
     </section>
   );
 }

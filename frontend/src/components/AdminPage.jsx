@@ -22,6 +22,7 @@ function AdminPage() {
   const [responses, setResponses] = useState([]);
   const [status, setStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [responseFilter, setResponseFilter] = useState(null);
 
   const handleCredentialChange = (event) => {
     const { name, value } = event.target;
@@ -133,6 +134,9 @@ function AdminPage() {
     .filter((item) => item.respuesta === "asistira")
     .reduce((total, item) => total + 1 + (item.acompanantes?.length || 0), 0);
   const notAttending = responses.filter((item) => item.respuesta === "no_asistira").length;
+  const filteredResponses = responseFilter
+    ? responses.filter((item) => item.respuesta === responseFilter)
+    : responses;
 
   return (
     <main className="admin-page">
@@ -154,22 +158,79 @@ function AdminPage() {
           <div><strong>{notAttending}</strong><span>No asistirán</span></div>
           <div><strong>{responses.length}</strong><span>Total respuestas</span></div>
         </div>
-        <div className="admin-table-wrap">
+        <section className="admin-responses" aria-label="Listado de respuestas">
+          <div className="admin-responses-heading">
+            <div>
+              <p className="admin-kicker">Lista general</p>
+              <h2>Respuestas registradas</h2>
+            </div>
+            <span className="admin-results-count">
+              {filteredResponses.length} {filteredResponses.length === 1 ? "respuesta" : "respuestas"}
+            </span>
+          </div>
+          <div className="admin-filters" aria-label="Filtrar respuestas">
+            <button
+              type="button"
+              className={`admin-filter-attending${responseFilter === "asistira" ? " is-active" : ""}`}
+              onClick={() => setResponseFilter((current) => current === "asistira" ? null : "asistira")}
+              aria-pressed={responseFilter === "asistira"}
+            >
+              Asistirán
+            </button>
+            <button
+              type="button"
+              className={`admin-filter-declined${responseFilter === "no_asistira" ? " is-active" : ""}`}
+              onClick={() => setResponseFilter((current) => current === "no_asistira" ? null : "no_asistira")}
+              aria-pressed={responseFilter === "no_asistira"}
+            >
+              No asistirán
+            </button>
+          </div>
+          <div className="admin-table-wrap">
           <table>
             <thead><tr><th>Nombre</th><th>Cédula</th><th>Celular</th><th>Acompañantes</th><th>Respuesta</th><th>Fecha</th></tr></thead>
             <tbody>
-              {responses.map((item) => (
+              {filteredResponses.map((item) => (
                 <tr key={item.id}>
                   <td>{item.nombre}</td><td>{item.cedula}</td><td>{item.celular}</td>
-                  <td>{item.acompanantes?.map((acompanante) => acompanante.nombre).join(", ") || "—"}</td>
+                  <td>
+                    {item.acompanantes?.length ? (
+                      <div className="admin-companions">
+                        {item.acompanantes.map((acompanante, index) => (
+                          <div className="admin-companion" key={`${acompanante.tipo}-${index}`}>
+                            <span className={`admin-companion-type${acompanante.tipo === "pareja" ? " is-partner" : ""}`}>
+                              {acompanante.tipo === "pareja" ? "Pareja" : "Hijo/a"}
+                            </span>
+                            <span className="admin-companion-name">{acompanante.nombre}</span>
+                            {acompanante.tipo === "pareja" && (
+                              <span className="admin-companion-details">
+                                {[acompanante.cedula && `Cédula: ${acompanante.cedula}`, acompanante.celular && `Celular: ${acompanante.celular}`]
+                                  .filter(Boolean)
+                                  .join(" · ")}
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <span className="admin-no-companions">Sin acompañantes</span>
+                    )}
+                  </td>
                   <td><span className={`admin-response ${item.respuesta}`}>{item.respuesta === "asistira" ? "Asistirá" : "No asistirá"}</span></td>
                   <td>{new Date(item.creado_en).toLocaleDateString("es-CO")}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          {!responses.length && <p className="admin-empty">Todavía no hay respuestas registradas.</p>}
-        </div>
+          {!filteredResponses.length && (
+            <p className="admin-empty">
+              {responses.length
+                ? "No hay respuestas para este filtro."
+                : "Todavía no hay respuestas registradas."}
+            </p>
+          )}
+          </div>
+        </section>
         {status && <p className="admin-status">{status}</p>}
       </section>
     </main>

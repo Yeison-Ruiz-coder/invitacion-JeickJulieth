@@ -14,6 +14,50 @@ add column if not exists acompanantes jsonb not null default '[]'::jsonb;
 create unique index if not exists rsvp_responses_cedula_unique
 on public.rsvp_responses (trim(cedula));
 
+create table if not exists public.rsvp_registered_identities (
+  cedula text primary key,
+  rsvp_response_id bigint not null references public.rsvp_responses(id) on delete cascade
+);
+
+alter table public.rsvp_registered_identities enable row level security;
+revoke all on table public.rsvp_registered_identities from anon, authenticated;
+
+insert into public.rsvp_registered_identities (cedula, rsvp_response_id)
+select trim(cedula), id
+from public.rsvp_responses
+on conflict (cedula) do nothing;
+
+create or replace function public.register_rsvp_identities()
+returns trigger
+language plpgsql
+security definer
+set search_path = pg_catalog, public
+as $$
+begin
+  insert into public.rsvp_registered_identities (cedula, rsvp_response_id)
+  select trim(identity), new.id
+  from (
+    select new.cedula as identity
+    union all
+    select companion.value ->> 'cedula'
+    from jsonb_array_elements(new.acompanantes) as companion(value)
+    where companion.value ->> 'tipo' = 'pareja'
+  ) as identities
+  where nullif(trim(identity), '') is not null;
+
+  return new;
+exception
+  when unique_violation then
+    raise exception 'La cédula del titular o de su pareja ya está registrada.'
+      using errcode = '23505';
+end;
+$$;
+
+drop trigger if exists rsvp_register_identities on public.rsvp_responses;
+create trigger rsvp_register_identities
+after insert on public.rsvp_responses
+for each row execute function public.register_rsvp_identities();
+
 alter table public.rsvp_responses enable row level security;
 
 grant select on table public.rsvp_responses to authenticated;
@@ -34,6 +78,16 @@ with check (
   and char_length(trim(celular)) between 7 and 30
   and respuesta in ('asistira', 'no_asistira')
   and jsonb_typeof(acompanantes) = 'array'
+  and not exists (
+    select 1
+    from jsonb_array_elements(acompanantes) as companion(value)
+    where companion.value ->> 'tipo' = 'pareja'
+      and (
+        char_length(trim(coalesce(companion.value ->> 'nombre', ''))) not between 2 and 120
+        or char_length(trim(coalesce(companion.value ->> 'cedula', ''))) not between 5 and 30
+        or char_length(trim(coalesce(companion.value ->> 'celular', ''))) not between 7 and 30
+      )
+  )
   and now() <= timestamptz '2026-12-11 23:59:59-05'
 );
 

@@ -23,10 +23,13 @@ function RecuerdosSection() {
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const section = sectionRef.current;
-      if (!section) return;
+    const section = sectionRef.current;
+    if (!section) return;
 
+    let frameId = null;
+    let lastRotation = null;
+
+    const updateRotation = () => {
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       const progress = Math.max(
@@ -34,14 +37,31 @@ function RecuerdosSection() {
         Math.min(1, (windowHeight - rect.top) / (rect.height + windowHeight * 0.6))
       );
 
-      setRotation(progress * 180);
+      const nextRotation = progress * 180;
+
+      if (lastRotation === null || Math.abs(nextRotation - lastRotation) > 0.15) {
+        lastRotation = nextRotation;
+        setRotation(nextRotation);
+      }
     };
 
-    handleScroll();
+    const handleScroll = () => {
+      if (frameId !== null) return;
+
+      frameId = requestAnimationFrame(() => {
+        frameId = null;
+        updateRotation();
+      });
+    };
+
+    updateRotation();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
 
     return () => {
+      if (frameId !== null) {
+        cancelAnimationFrame(frameId);
+      }
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
